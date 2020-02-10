@@ -1,0 +1,13 @@
+{
+    "name": "zingeon/arcsecond-laravel",
+    "description": "Laravel package for world-wide astronomy data APIs",
+    "authors": [
+        {
+            "name": "Andrii Pushkar",
+            "email": "zingeon1@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    }
+}
