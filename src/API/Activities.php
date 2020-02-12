@@ -5,35 +5,15 @@ namespace Zingeon\ArcsecondLaravel\API;
 
 class Activities extends API
 {
-    protected $_uri = 'activities/';
-    protected $page;
-    protected $pageSize;
 
-    public function getItems() {
+    public function getItems($pageSize = null, $page = null) {
 
-        $params = [];
-        if (!is_null($this->page)) {
-            $params['query']['page'] = $this->page;
-        }
+        $params = $this->preparePaginationParams($pageSize, $page);
 
-        if (!is_null($this->pageSize)) {
-            $params['query']['page_size'] = $this->pageSize;
-        }
-
-        return $this->_get($this->_uri, $params);
-    }
-
-    public function setPage($page) {
-        $this->page = $page;
-        return $this;
-    }
-
-    public function setPageSize($pageSize) {
-        $this->pageSize = $pageSize;
-        return $this;
+        return $this->_get('activities/', $params);
     }
 
     public function getItemById($id) {
-        return $this->_get($this->_uri . $id);
+        return $this->_get('activities/' . $id);
     }
 }

@@ -13,6 +13,19 @@ class API
         $this->config = $config;
     }
 
+    protected function preparePaginationParams($pageSize, $page) {
+        $params = [];
+        if (!is_null($pageSize)) {
+            $params['query']['page_size'] = $pageSize;
+        }
+
+        if (!is_null($page)) {
+            $params['query']['page'] = $page;
+        }
+
+        return $params;
+    }
+
     protected function _get($uri = null, $params = []) {
         return json_decode((string) $this->execute()->get($uri, $params)->getBody(), true);
     }
