@@ -7,32 +7,26 @@ class Archives extends API
 {
 
     public function getItems() {
-        return $this->_get('archives/');
+        return $this->get('archives/');
     }
 
     public function getItemByName($name) {
-        return $this->_get('archives/' . $name);
+        return $this->get('archives/' . $name);
     }
 
-    public function getESOData($pageSize = null, $page = null) {
-
-        $params = $this->preparePaginationParams($pageSize, $page);
-
-        return $this->_get('archives/ESO/data/', $params);
+    public function getESOData($params) {
+        return $this->get('archives/ESO/data/', $params);
     }
 
     public function getESOProgrammeById($id) {
-        return $this->_get('archives/ESO/programmes/' . $id);
+        return $this->get('archives/ESO/programmes/' . $id);
     }
 
-    public function getGeminiData($pageSize = null, $page = null) {
-
-        $params = $this->preparePaginationParams($pageSize, $page);
-
-        return $this->_get('/archives/Gemini/data/', $params);
+    public function getGeminiData($params) {
+        return $this->get('/archives/Gemini/data/', $params);
     }
 
     public function getGeminiProgrammes($id) {
-        return $this->_get('archives/Gemini/programmes/' . $id);
+        return $this->get('archives/Gemini/programmes/' . $id);
     }
 }

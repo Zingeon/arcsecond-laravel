@@ -18,18 +18,18 @@ class Auth extends API
 
         $params['form_params']['password'] = $password;
 
-        return $this->_post('auth/login/', $params);
+        return $this->post('auth/login/', $params);
     }
 
     public function logout() {
-        return $this->_post('auth/logout/');
+        return $this->post('auth/logout/');
     }
 
     public function resetPassword($email) {
 
         $params['form_params']['email'] = $email;
 
-        return $this->_post('auth/password/reset/', $params);
+        return $this->post('auth/password/reset/', $params);
     }
 
     public function confirmResetPassword($newPassword, $repeatNewPassword, $uid, $token) {
@@ -40,7 +40,7 @@ class Auth extends API
         $params['form_params']['uid'] = $uid;
         $params['form_params']['token'] = $token;
 
-        return $this->_post('auth/password/reset/confirm/', $params);
+        return $this->post('auth/password/reset/confirm/', $params);
     }
 
     public function signup($email, $username, $password, $repeatPassword) {
@@ -51,22 +51,22 @@ class Auth extends API
         $params['form_params']['email'] = $email;
         $params['form_params']['username'] = $username;
 
-        return $this->_post('auth/registration/', $params);
+        return $this->post('auth/registration/', $params);
     }
 
     public function signupVerifyEmail($key) {
 
         $params['form_params']['key'] = $key;
 
-        return $this->_post('auth/registration/verify-email/', $params);
+        return $this->post('auth/registration/verify-email/', $params);
     }
 
     public function verifyTokenMembership() {
-        return $this->_post('auth/token-membership-verify/');
+        return $this->post('auth/token-membership-verify/');
     }
 
     public function verifyToken() {
-        return $this->_post('auth/token-verify/');
+        return $this->post('auth/token-verify/');
     }
 
     public function token($username, $password) {
@@ -74,6 +74,6 @@ class Auth extends API
 
         $params['form_params']['username'] = $username;
         $params['form_params']['password'] = $password;
-        return $this->_post('auth/token/', $params);
+        return $this->post('auth/token/', $params);
     }
 }
