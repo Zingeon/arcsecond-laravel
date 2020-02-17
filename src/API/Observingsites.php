@@ -1,35 +1,92 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Observingsites API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
 
 class Observingsites extends API
 {
-    public function getItems($params = []) {
-        return $this->get('observingsites/', $params);
+
+    /**
+     * Get an Observingsites list
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('observingsites/', $queryParams);
     }
 
-    public function getItemsUpdates($params) {
-        return $this->get('observingsites/updates/', $params);
+    /**
+     * Get an Observingsites updates
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemsUpdates($queryParams = []) {
+        return $this->get('observingsites/updates/', $queryParams);
     }
 
-    public function getItemByUUID($uuid) {
-        return $this->get('observingsites/' . $uuid);
+    /**
+     * Get an Observingsite details by id
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemByUUID($uuid, $queryParams = []) {
+        return $this->get('observingsites/' . $uuid, $queryParams);
     }
 
-    public function getItemImages($uuid) {
-        return $this->get('observingsites/' . $uuid . '/images/');
+    /**
+     * Get an Observingsite images
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemImages($uuid, $queryParams = []) {
+        return $this->get('observingsites/' . $uuid . '/images/', $queryParams);
     }
 
-    public function getItemInterferometers($uuid) {
-        return $this->get('observingsites/' . $uuid . '/interferometers/');
+    /**
+     * Get an Observingsite interferometers
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemInterferometers($uuid, $queryParams = []) {
+        return $this->get('observingsites/' . $uuid . '/interferometers/', $queryParams);
     }
 
-    public function getItemTelescopes($uuid) {
-        return $this->get('observingsites/' . $uuid . '/telescopes/');
+    /**
+     * Get an Observingsite telescopes
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemTelescopes($uuid, $queryParams = []) {
+        return $this->get('observingsites/' . $uuid . '/telescopes/', $queryParams);
     }
 
-    public function getItemWeather($uuid) {
-        return $this->get('observingsites/' . $uuid . '/weather/');
+    /**
+     * Get an Observingsite weather
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemWeather($uuid, $queryParams = []) {
+        return $this->get('observingsites/' . $uuid . '/weather/', $queryParams);
     }
 }

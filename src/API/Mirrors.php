@@ -1,4 +1,13 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Mirrors API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
@@ -15,15 +24,35 @@ class Mirrors extends API
         'telescope'
     ];
 
-    public function getItems() {
-        return $this->get('mirrors/');
+    /**
+     * Get a list of mirrors
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('mirrors/', $queryParams);
     }
 
-    public function getItemById($id) {
-        return $this->get('mirrors/' . $id);
+    /**
+     * Get a Mirror details by id
+     *
+     * @param string $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemById($id, $queryParams = []) {
+        return $this->get('mirrors/' . $id, $queryParams);
     }
 
-    public function updateItemById($id, $parameters) {
-        return $this->putOrPatch('mirrors/' . $id . '/', $parameters);
+    /**
+     * Update Mirror details by id
+     *
+     * @param string $id
+     * @param array $params
+     * @return mixed
+     */
+    public function updateItemById($id, $params) {
+        return $this->putOrPatch('mirrors/' . $id . '/', $params);
     }
 }

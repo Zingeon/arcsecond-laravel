@@ -1,11 +1,28 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Findingcharts API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
 
 class Findingcharts extends API
 {
-    public function getItemByInput($input) {
-        return $this->delete('findingcharts/' . $input);
+
+    /**
+     * Get Findingcharts by input
+     *
+     * @param string $input
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemByInput($input, $queryParams = []) {
+        return $this->get('findingcharts/' . $input, $queryParams);
     }
 }

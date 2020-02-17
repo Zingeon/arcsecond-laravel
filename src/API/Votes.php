@@ -1,4 +1,13 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Votes API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
@@ -21,15 +30,35 @@ class Votes extends API
         'session'
     ];
 
-    public function getItems() {
-        return $this->get('votes/');
+    /**
+     * Get a list of Votes
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('votes/', $queryParams);
     }
 
-    public function getItemById($id) {
-        return $this->get('votes/' . $id);
+    /**
+     * Get a Vote by id
+     *
+     * @param integer $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemById($id, $queryParams = []) {
+        return $this->get('votes/' . $id, $queryParams);
     }
 
-    public function updateItemById($id, $parameters) {
-        return $this->putOrPatch('votes/' . $id . '/', $parameters);
+    /**
+     * Update a Vote by id
+     *
+     * @param integer $id
+     * @param array $params
+     * @return mixed
+     */
+    public function updateItemById($id, $params) {
+        return $this->putOrPatch('votes/' . $id . '/', $params);
     }
 }

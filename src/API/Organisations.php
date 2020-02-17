@@ -1,4 +1,13 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Organisations API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
@@ -18,15 +27,35 @@ class Organisations extends API
         'cover'
     ];
 
-    public function getItems() {
-        return $this->get('organisations/');
+    /**
+     * Get a list of Organisations
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('organisations/', $queryParams);
     }
 
-    public function getItemBySubdomain($id) {
-        return $this->get('organisations/' . $id);
+    /**
+     * Get an Organisation details by subdomain
+     *
+     * @param string $subdomain
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemBySubdomain($subdomain, $queryParams = []) {
+        return $this->get('organisations/' . $subdomain, $queryParams);
     }
 
-    public function updateItemBySubdomain($id, $parameters) {
-        return $this->putOrPatch('organisations/' . $id . '/', $parameters);
+    /**
+     * Update an Organisation details by subdomain
+     *
+     * @param string $subdomain
+     * @param array $params
+     * @return mixed
+     */
+    public function updateItemBySubdomain($subdomain, $params) {
+        return $this->putOrPatch('organisations/' . $subdomain . '/', $params);
     }
 }

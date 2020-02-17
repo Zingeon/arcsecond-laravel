@@ -1,4 +1,13 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Catalogues API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
@@ -6,26 +15,59 @@ namespace Zingeon\ArcsecondLaravel\API;
 class Catalogues extends API
 {
 
-    public function getItems() {
-        return $this->get('catalogues/');
+    /**
+     * Get a List of Catalogues
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('catalogues/', $queryParams);
     }
 
-    public function getItemById($id) {
-        return $this->get('catalogues/' . $id);
+    /**
+     * Get a Detail of a Catalogue by id
+     *
+     * @param integer $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemById($id, $queryParams = []) {
+        return $this->get('catalogues/' . $id, $queryParams);
     }
 
-    public function getItemTables($id) {
-        return $this->get('catalogues/' . $id . '/tables/');
+    /**
+     * Get a List of Tables of a given Catalogue
+     *
+     * @param integer $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemTables($id, $queryParams = []) {
+        return $this->get('catalogues/' . $id . '/tables/', $queryParams);
     }
 
-    public function getItemTableByIndex($id, $index) {
-        return $this->get('catalogues/' . $id . '/tables/' . $index);
+    /**
+     * Get a Detail of a Table for a given Catalogue
+     *
+     * @param integer $id
+     * @param string $index
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemTableByIndex($id, $index, $queryParams = []) {
+        return $this->get('catalogues/' . $id . '/tables/' . $index, $queryParams);
     }
 
-    public function getItemTableRows($id, $index, $pageSize = null, $page = null) {
-
-        $params = $this->preparePaginationParams($pageSize, $page);
-
-        return $this->get('catalogues/' . $id . '/tables/' . $index . '/rows/', $params);
+    /**
+     * Get a List of Rows of a Catalogue Table
+     *
+     * @param string $id
+     * @param string $index
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemTableRows($id, $index, $queryParams = []) {
+        return $this->get('catalogues/' . $id . '/tables/' . $index . '/rows/', $queryParams);
     }
 }

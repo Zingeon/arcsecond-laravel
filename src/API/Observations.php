@@ -1,4 +1,13 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Observations API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
@@ -13,14 +22,34 @@ class Observations extends API
         'notes'
     ];
 
-    public function getItemByUUID($uuid) {
-        return $this->get('observations/' . $uuid);
+    /**
+     * Get Observation by UUID
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemByUUID($uuid, $queryParams = []) {
+        return $this->get('observations/' . $uuid, $queryParams);
     }
 
-    public function updateItemByUUID($uuid, $parameters) {
-        return $this->putOrPatch('observations/' . $uuid . '/', $parameters);
+    /**
+     * Update Observation by UUID
+     *
+     * @param string $uuid
+     * @param array $params
+     * @return mixed
+     */
+    public function updateItemByUUID($uuid, $params) {
+        return $this->putOrPatch('observations/' . $uuid . '/', $params);
     }
 
+    /**
+     * Delete Observation by UUID
+     *
+     * @param string $uuid
+     * @return mixed
+     */
     public function deleteItemByUUID($uuid) {
         return $this->delete('observations/' . $uuid);
     }

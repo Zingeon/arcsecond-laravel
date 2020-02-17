@@ -1,20 +1,48 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Telescopes API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
 
 class Telescopes extends API
 {
-    public function getItems($params = []) {
-        return $this->get('telescopes/', $params);
+    /**
+     * Get a list of Telescopes
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('telescopes/', $queryParams);
     }
 
-    public function getItemsUpdates($params = []) {
-        return $this->get('telescopes/updates/', $params);
+    /**
+     * Get Telescopes updates
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemsUpdates($queryParams = []) {
+        return $this->get('telescopes/updates/', $queryParams);
     }
 
-    public function getItemByUUID($uuid) {
-        return $this->get('telescopes/' . $uuid);
+    /**
+     * Get Telescope details by UUID
+     *
+     * @param string $uuid
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemByUUID($uuid, $queryParams = []) {
+        return $this->get('telescopes/' . $uuid, $queryParams);
     }
 
 }

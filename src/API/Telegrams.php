@@ -1,19 +1,48 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Telegrams API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
 
 class Telegrams extends API
 {
-    public function getItems() {
-        return $this->get('telegrams/ATel/');
+    /**
+     * Get a list of Telegrams
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('telegrams/ATel/', $queryParams);
     }
 
-    public function getItemById($id) {
-        return $this->get('telegrams/ATel/' . $id);
+    /**
+     * Get Telegram details by id
+     *
+     * @param string $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemById($id, $queryParams = []) {
+        return $this->get('telegrams/ATel/' . $id, $queryParams);
     }
 
-    public function getItemCirculars($id) {
-        return $this->get('telegrams/GCN/Circulars/' . $id );
+    /**
+     * Get Telegram circulars by id
+     *
+     * @param string $id
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemCirculars($id, $queryParams = []) {
+        return $this->get('telegrams/GCN/Circulars/' . $id, $queryParams);
     }
 }

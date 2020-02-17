@@ -1,16 +1,38 @@
 <?php
+/**
+ * Part of Arcsecond package
+ *
+ * Publications API
+ *
+ * @package arcsecond-laravel
+ * @author Andrii Pushkar <zingeon1@gmail.com>
+ * @access public
+ */
 
 namespace Zingeon\ArcsecondLaravel\API;
 
 
 class Publications extends API
 {
-    public function getItems($params = []) {
-        return $this->get('publications/', $params);
+    /**
+     * Get a Lists of Publications
+     *
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItems($queryParams = []) {
+        return $this->get('publications/', $queryParams);
     }
 
-    public function getItemByBibCode($bibcode) {
-        return $this->get('publications/' . $bibcode);
+    /**
+     * Get a Details of a Publication by bibcode
+     *
+     * @param string $bibcode
+     * @param array $queryParams
+     * @return mixed
+     */
+    public function getItemByBibCode($bibcode, $queryParams = []) {
+        return $this->get('publications/' . $bibcode, $queryParams);
     }
 
 }
