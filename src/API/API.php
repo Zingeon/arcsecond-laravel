@@ -2,16 +2,16 @@
 
 namespace Zingeon\ArcsecondLaravel\API;
 
-use GuzzleHttp\{Client, RequestOptions};
+use GuzzleHttp\Client;
 use Zingeon\ArcsecondLaravel\ConfigInterface;
 
 class API
 {
-    private $config;
+    private $_config;
     protected $model;
 
     public function __construct(ConfigInterface $config) {
-        $this->config = $config;
+        $this->_config = $config;
     }
 
     protected function preparePaginationParams($pageSize, $page) {
@@ -76,29 +76,29 @@ class API
 
     protected function get($uri = null, $params = []) {
         $params = $this->_handleQueryData($params);
-        return json_decode((string) $this->execute()->get($uri, $params)->getBody(), true);
+        return json_decode((string) $this->_execute()->get($uri, $params)->getBody(), true);
     }
 
     protected function post($uri = null, $params = []) {
         $params = $this->_handleMultipartData($params);
-        return json_decode((string) $this->execute()->post($uri, $params)->getBody(), true);
+        return json_decode((string) $this->_execute()->post($uri, $params)->getBody(), true);
     }
 
-    protected function _delete($uri = null, $params = []) {
-        return json_decode((string) $this->execute()->delete($uri, $params)->getBody(), true);
+    protected function delete($uri = null, $params = []) {
+        return json_decode((string) $this->_execute()->delete($uri, $params)->getBody(), true);
     }
 
     protected function put($uri = null, $params = []) {
         $params = $this->_handleMultipartData($params);
-        return json_decode((string) $this->execute()->put($uri, $params)->getBody(), true);
+        return json_decode((string) $this->_execute()->put($uri, $params)->getBody(), true);
     }
 
     protected function patch($uri = null, $params = []) {
         $params = $this->_handleMultipartData($params);
-        return json_decode((string) $this->execute()->patch($uri, $params)->getBody(), true);
+        return json_decode((string) $this->_execute()->patch($uri, $params)->getBody(), true);
     }
 
-    private function execute() {
-        return new Client(['base_uri' => $this->config->apiUrl]);
+    private function _execute() {
+        return new Client(['base_uri' => $this->_config->apiUrl]);
     }
 }
