@@ -33,7 +33,7 @@ class API
         return count($intersection) === count($this->model) && !$difference;
     }
 
-    protected function _put_or_patch(string $uri, $input) {
+    protected function putOrPatch(string $uri, $input) {
         $isPutMethod = $this->_isInputEqualToModel(array_keys($input));
 
         if($isPutMethod) {

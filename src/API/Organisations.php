@@ -27,6 +27,6 @@ class Organisations extends API
     }
 
     public function updateItemBySubdomain($id, $parameters) {
-        return $this->_put_or_patch('organisations/' . $id . '/', $parameters);
+        return $this->putOrPatch('organisations/' . $id . '/', $parameters);
     }
 }

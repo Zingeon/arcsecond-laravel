@@ -24,6 +24,6 @@ class Mirrors extends API
     }
 
     public function updateItemById($id, $parameters) {
-        return $this->_put_or_patch('mirrors/' . $id . '/', $parameters);
+        return $this->putOrPatch('mirrors/' . $id . '/', $parameters);
     }
 }
