@@ -23,6 +23,7 @@ class ArcsecondServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerArcsecond();
+        $this->registerConfig();
     }
 
     protected function registerArcsecond() {
@@ -35,5 +36,14 @@ class ArcsecondServiceProvider extends ServiceProvider
         });
 
         $this->app->alias('arcsecond', Arcsecond::class);
+    }
+
+    protected function registerConfig() {
+        $this->app->singleton('arcsecond.config', function ($app) {
+            return $app['arcsecond']->getConfig();
+        });
+
+        $this->app->alias('arcsecond.config', Config::class);
+        $this->app->alias('arcsecond.config', ConfigInterface::class);
     }
 }
