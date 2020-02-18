@@ -22,8 +22,17 @@ class Arcsecond
      *
      * return void
      */
-    public function __construct() {
-        $this->config = new Config();
+    public function __construct($apiKey = null, $apiUrl = null) {
+        $this->config = new Config($apiKey, $apiUrl);
+    }
+
+    /**
+     * Get Config instance
+     *
+     * @return Config
+     */
+    public function getConfig() {
+        return $this->config;
     }
 
     /**

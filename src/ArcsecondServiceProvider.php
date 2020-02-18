@@ -22,16 +22,18 @@ class ArcsecondServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerArcsecond();
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        include __DIR__.'/routes.php';
+    protected function registerArcsecond() {
+        $this->app->singleton('arcsecond', function($app) {
+            $config = $app['config']->get('services.arcsecond');
+            $apiKey = $config['apiKey'] ?? null;
+            $apiUrl = $config['apiUrl'] ?? null;
+
+            return new Arcsecond($apiKey, $apiUrl);
+        });
+
+        $this->app->alias('arcsecond', Arcsecond::class);
     }
 }

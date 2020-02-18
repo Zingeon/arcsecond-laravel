@@ -31,11 +31,12 @@ class Config implements ConfigInterface
     /**
      * Config constructor
      *
-     * return void
+     * @param string|null $apiKey
+     * @param string|null $apiUrl
      */
-    public function __construct() {
-        $this->setApiKey(getenv('ARCSECOND_API_KEY'));
-        $this->setApiUrl(getenv('ARCSECOND_API_URL'));
+    public function __construct($apiKey = null, $apiUrl = null) {
+        $this->setApiKey($apiKey ?: getenv('ARCSECOND_API_KEY', ''));
+        $this->setApiUrl($apiUrl ?: getenv('ARCSECOND_API_URL', ''));
     }
 
     /**
